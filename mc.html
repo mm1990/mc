@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=640" />
+    <link rel="stylesheet" href="http://puddingcone.nimads.com/weibo/common/base.css" />
+    <script src="http://puddingcone.nimads.com/weibo/common/jquery.js"></script>
+
+    <title>颤抖吧！布丁黄</title>
+    <style>
+        *{position: absolute; top: 0; left: 0}
+        #prize{top: 0; left: 0; width: 640px; height: 1040px; background-color: #000000}
+        .backBtn{top: 25px; left: 545px; background: url("http://puddingcone.nimads.com/weibo/prize/images/backBtn.png") no-repeat; width: 75px; height: 75px;}
+        .startBtn{top: 850px; left: 178px; background: url("http://puddingcone.nimads.com/weibo/prize/images/startBtn.png") no-repeat; width: 286px; height: 94px;}
+        .exChangeBtn{top: 850px; left: 178px; background: url("http://puddingcone.nimads.com/weibo/prize/images/exchangeBtn.png") no-repeat; width: 286px; height: 94px; display: none;}
+        #prize p{text-align: center; color: #ffffff;  font-family: '微软雅黑', Verdana, Arial, Helvetica; font-size: 24px; height: 50px; font-weight: bold; border-radius: 12px; width: 640px;}
+        .ice_0{top: 305px; left: 190px; display: block;}
+        .ice_1{top: 335px; left: 225px; display: none;}
+        .ice_2{top: 335px; left: 225px; display: none;}
+        .tips{background-color: #000000; width: 640px; height: 1040px; display: none;}
+        .qxBtn{top: 565px; left: 65px; background: url("http://puddingcone.nimads.com/weibo/prize/images/qxBtn.png") no-repeat; width: 249px; height: 78px;}
+        .qdBtn{top: 565px; left: 325px; background: url("http://puddingcone.nimads.com/weibo/prize/images/qdBtn.png") no-repeat; width: 249px; height: 78px;}
+
+        .iceface
+        {
+            top: 135px;
+            left: 65px;
+            width: 73px;
+            height: 87px;
+            background-image: url("http://puddingcone.nimads.com/weibo/prize/images/iceface1.png");
+            -webkit-animation: iceface 2s steps(10) infinite;
+        }
+        @-webkit-keyframes iceface
+        {
+            0% { background-position: 0px 0; }
+            100% { background-position: -730px 0; }
+        }
+
+        .iceface2
+        {
+            top: 135px;
+            left: 30px;
+            width: 146px;
+            height: 78px;
+            background-image: url("http://puddingcone.nimads.com/weibo/prize/images/iceface2.png");
+        }
+    </style>
+    <script>
+        $(function(){
+			$('.exChangeBtn').show();
+			$('.startBtn').hide();
+			$('.ice_0').hide();
+			$('.ice_1').hide();
+			$('.ice_2').show();
+			$('#icenum')[0].src = 'http://puddingcone.nimads.com/weibo/prize/images/n2.png';
+			$('#icenum').html(2);
+			
+			//定义兑按钮
+			$('.exChangeBtn').on('click', function(){$('.tips').show();});
+			
+			//取消按钮
+			$('.qxBtn').on('click', function(){$('.tips').hide();});
+			
+			//确定按钮
+            $('.qdBtn').on('click', function(){
+				//parent.iceNum = 2;
+				setIceNum(0);
+				$('.tips').children().hide();
+				$('#success').fadeIn();
+				$('#success').delay(300).animate({'opacity':0}, function()
+				{
+					$('.tips').hide();
+				})
+			});
+			
+		
+			function setIceNum(i)
+            {
+                switch (i)
+                {
+                    case 0:
+                        $('.startBtn').show();
+                        $('.exChangeBtn').hide();
+                        $('.ice_0').show();
+                        $('.ice_1').hide();
+                        $('.ice_2').hide();
+                        $('#icenum')[0].src = 'http://puddingcone.nimads.com/weibo/prize/images/n0.png';
+                        break;
+
+                    case 1:
+                        $('.exChangeBtn').show();
+                        $('.startBtn').hide();
+                        $('.ice_0').hide();
+                        $('.ice_1').show();
+                        $('.ice_2').hide();
+                        $('#icenum')[0].src = 'http://puddingcone.nimads.com/weibo/prize/images/n1.png';
+                        break;
+
+                    case 2:
+                        $('.exChangeBtn').show();
+                        $('.startBtn').hide();
+                        $('.ice_0').hide();
+                        $('.ice_1').hide();
+                        $('.ice_2').show();
+                        $('#icenum')[0].src = 'http://puddingcone.nimads.com/weibo/prize/images/n2.png';
+                        break;
+                }
+                $('#icenum').html(0);
+            }
+
+			
+			
+        })
+    </script>
+</head>
+<body>
+<div id="prize">
+    <img id="icenum" src="http://puddingcone.nimads.com/weibo/prize/images/n0.png" style="top: 55px; left: 312px;">
+    <img src="http://puddingcone.nimads.com/weibo/prize/images/tips2.png" style="top: 140px; left: 140px;">
+    <img src="http://puddingcone.nimads.com/weibo/prize/images/rrule.png" style="top: 730px; left: 140px;">
+    <a class="backBtn" href="javascript:void(0)"></a>
+    <a class="startBtn" href="javascript:void(0)"></a>
+    <a class="exChangeBtn" href="javascript:void(0)"></a>
+    <div class="ice_0">
+        <img src="http://puddingcone.nimads.com/weibo/prize/images/ice_0.jpg">
+    </div>
+    <div class="ice_1">
+        <img src="http://puddingcone.nimads.com/weibo/prize/images/ice.jpg">
+        <div class="iceface"></div>
+    </div>
+    <div class="ice_2">
+        <div style="-webkit-transform: rotate(-10deg); top: -10px; left: -140px;">
+            <img src="http://puddingcone.nimads.com/weibo/prize/images/ice.jpg" style="width: 200px;">
+            <div class="iceface2"></div>
+        </div>
+        <div style="-webkit-transform: rotate(10deg); top: -45px; left: 140px;">
+            <img src="http://puddingcone.nimads.com/weibo/prize/images/ice.jpg" style="width: 200px;">
+            <div class="iceface"></div>
+        </div>
+    </div>
+    <div class="tips">
+        <img src="https://raw.githubusercontent.com/leochan2017/imagesHouse/imagesHouse/tips.png">
+        <a class="qxBtn" href="javascript:void(0)"></a>
+        <a class="qdBtn" href="javascript:void(0)"></a>
+        <img id="success" src="http://puddingcone.nimads.com/weibo/prize/images/success.png" style="top: 475px; left: 209px; display: none;">
+    </div>
+
+    <div id="error" style="display: none">
+        <img src="http://puddingcone.nimads.com/weibo/prize/images/error.jpg">
+        <a href="javascript:void(0);" style="width: 250px; height: 80px; top: 610px; left: 195px;"></a>
+    </div>
+</div>
+</body>
+</html>
